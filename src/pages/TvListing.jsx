@@ -20,7 +20,7 @@ export default function TvListing({ cart, setCart, pageType }) {
     max: 5000
   });
 
-  // ✅ правильный сброс при смене категории
+  // правильный сброс при смене категории
   useEffect(() => {
     setBrand("");
     setMin("");

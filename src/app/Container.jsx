@@ -9,8 +9,9 @@ import Cart from "../pages/Cart";
 
 function Container() {
   const [pageType, setPageType] = useState("tv");
-  
+
   const [cart, setCart] = useState({});
+  
 
   return (
     <>
@@ -19,7 +20,7 @@ function Container() {
         setPageType={setPageType}
         cart={cart}
       />
-
+      
       <Content
         pageType={pageType}
         setPageType={setPageType}
