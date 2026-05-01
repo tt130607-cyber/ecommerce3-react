@@ -1,4 +1,12 @@
+import { useState } from "react";
+import Timer from "../components/Timer";
+import WeatherWidget from "../components/WeatherWidget";
+import Modal from "../components/Modal";
+
 export default function Sidebar({ setBrand, setMinPrice, setMaxPrice, applyFilters }) {
+  const [showTimer, setShowTimer] = useState(true);
+  const [showWeather, setShowWeather] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   return (
     <div>
       <h3>Filters</h3>
@@ -44,13 +52,20 @@ export default function Sidebar({ setBrand, setMinPrice, setMaxPrice, applyFilte
       </div>
 
       <button className="apply-btn" onClick={applyFilters}>
-  Apply Filters
-</button>
-
+      Apply Filters
+      </button>
       <div className="deal-banner">
-        <h4>Special Deal</h4>
-        <p>00:59:59</p>
+
+        {showTimer && <Timer onClose={() => setShowTimer(false)} />}
       </div>
+      {showWeather && (
+  <WeatherWidget onClose={() => setShowWeather(false)} />
+)}
+
+<button onClick={() => setShowModal(true)}>
+  Open Modal
+</button>
+{showModal && <Modal onClose={() => setShowModal(false)} />}
     </div>
   );
 }
